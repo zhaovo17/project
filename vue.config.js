@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 
 module.exports = {
+    publicPath: process.env.NODE_ENV === 'production' ? '/project/' : '/',
     devServer: {
         disableHostCheck: true,
         //代理
@@ -18,8 +19,8 @@ module.exports = {
             }
         }
     },
-     //@路径配置
-     chainWebpack: config => {
+    //@路径配置
+    chainWebpack: config => {
         config.resolve.alias
             .set("@", resolve("src"))
     },
